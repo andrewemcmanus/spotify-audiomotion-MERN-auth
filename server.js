@@ -1,13 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
+// const createError = require('http-errors');
+const express = require('express');
+// var path = require('path');
+// const cookieParser = require('cookie-parser');
+// const logger = require('morgan');
+const app = express();
+const cors = require('cors');
+const passport = require('passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const PORT = process.env.PORT || 8000;
 
-var app = express();
+//  api
+const users = require('./api/users');
+const request = require('./api/request');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
