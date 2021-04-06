@@ -1,4 +1,3 @@
-// const createError = require('http-errors');
 require('dotenv').config();
 const express = require('express');
 // var path = require('path');
@@ -6,7 +5,9 @@ const express = require('express');
 // const logger = require('morgan');
 const app = express();
 const cors = require('cors');
+// const session = require('express-session');
 const passport = require('passport');
+// const SECRET_SESSION = process.env.CLIENT_SECRET;
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 const PORT = process.env.PORT || 8000;
