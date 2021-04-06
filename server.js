@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Connected to back end'})
+  res.status(200).json({ message: 'Connected to back end'});
 });
 
 app.use('/api/users', users);
