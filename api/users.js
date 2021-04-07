@@ -42,6 +42,33 @@ router.post('/register', (req, res) => {
   })
 })
 
-
+router.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  db.User.findOne({ email })
+  .then(user => {
+    if (!user) {
+      res.status(400).json({ msg: 'User not found' })
+    } else {
+      bcrypt.compare(password, user.password)
+      .then(isMatch => {
+        if (isMatch) {
+          const payload = {
+            id: user.id,
+            email: user.email,
+            name: user.name
+          }
+          jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' }, (error, token) => {
+            res.json({
+              token: `Bearer ${token}`,
+            })
+          })
+        } else {
+          return res.status(400).json({ msg: 'Email or password is incorrect' })
+        }
+      })
+    }
+  })
+})
 
 module.exports = router;
