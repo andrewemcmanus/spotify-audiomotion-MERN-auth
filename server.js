@@ -56,4 +56,4 @@ app.listen(PORT, () => {
   console.log(`Server is live on port ${PORT}`);
 })
 
-module.exports = app;
+// module.exports = app;
