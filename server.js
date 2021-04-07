@@ -7,7 +7,8 @@ const app = express();
 const cors = require('cors');
 // const session = require('express-session');
 const passport = require('passport');
-// const SECRET_SESSION = process.env.CLIENT_SECRET;
+require('./config/passport')(passport)
+const SECRET_SESSION = process.env.CLIENT_SECRET;
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 const PORT = process.env.PORT || 8000;
