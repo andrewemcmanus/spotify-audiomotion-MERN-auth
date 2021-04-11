@@ -9,7 +9,7 @@ const User = require('../models/User');
 
 const options = {};
 options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-options.secretOrKey = process.env.JWT_SECRET;
+options.secretOrKey = process.env.CLIENT_SECRET;
 
 module.exports = (passport) => {
   passport.use(new JwtStrategy(options, (jwt_payload, done) => {

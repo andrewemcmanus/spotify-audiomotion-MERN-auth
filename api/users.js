@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
-const JWT_SECRET = process.env.JWT_SECRET
+const CLIENT_SECRET = process.env.CLIENT_SECRET
 const db = require('../models')
 
 /* GET users listing. */
@@ -58,7 +58,7 @@ router.post('/login', (req, res) => {
             email: user.email,
             name: user.name
           }
-          jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' }, (error, token) => {
+          jwt.sign(payload, CLIENT_SECRET, { expiresIn: '1h' }, (error, token) => {
             res.json({
               token: `Bearer ${token}`,
             })
